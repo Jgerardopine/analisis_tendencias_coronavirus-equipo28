@@ -7,6 +7,7 @@
     <title>UNIR :: Grupo 28 - Visualizacion de datos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="css/tab_styles.css">
+    <link rel="stylesheet" href="css/muertes_styles.css">
 </head>
 <body>
     <header>
@@ -33,12 +34,17 @@
         <p>Graficas</p>
       </div>
     
-      <div id="CovidMuertes" class="tabcontent">
+      <div id="CovidMuertes" class="tabcontent container">
         <h3>Muertes en España 2021-2022</h3>
-        <p>Gráficas</p>
-        <select id="metrica" class="form-control my-2">
+        <br>
+        <p>El sitio <a href="https://epdata.es"> La evolución del coronavirus en España, en gráficos</a> obtiene los datos de las actualizaciones 
+            del Centro de Coordinación de Alertas y Emergencias Sanitarias del Ministerio de Sanidad.
+            De acuerdo a este sitio, en España han fallecido por coronavirus más de <b>100.000 personas</b> a causa de l COVID-19 desde el 2021.</p>
+        <p>En la siguiente gráfica podemos ver el incremento gradual de muertes desde el 15 de Febrero hasta el 24 de junio de 2022</p>
+        <br>
+        <select id="metricaMuertesCovid" class="form-control my-2">
         </select>
-        <div id="graph"></div> 
+        <div id="grafica_muertes"></div> 
       </div>
     
       <div id="CovidUCI" class="tabcontent">

@@ -1,7 +1,8 @@
-const graph = d3.select("#graph");
-const metrica = d3.select("#metrica");
+const grafica_muertes = d3.select("#grafica_muertes");
+const metricaMuertesCovid = d3.select("#metricaMuertesCovid");
 
-const anchoTotal = +graph.style("width").slice(0, -2)
+//const anchoTotal = +grafica_muertes.style("width").slice(0, -2)
+const anchoTotal = 1116
 const altoTotal = anchoTotal * 9 /16
 
 //Margenes Barras
@@ -16,11 +17,10 @@ const ancho = anchoTotal - margins.left - margins.right
 const alto = altoTotal - margins.top - margins.bottom
 
 //Elementos Graficos
-const svg = graph.append("svg")
+const svg = grafica_muertes.append("svg")
     .attr("width", anchoTotal)
     .attr("height", altoTotal)
-    .attr("class", "graph")
-
+    .attr("class", "grafica_muertes")
 
 const layer = svg
     .append("g")
@@ -36,19 +36,19 @@ const g = svg
     .attr("transform", `translate(${margins.left},${margins.top})`)
 
 
-let data
+//let dataMuertes
 
 
 //Carga de datos
-const draw = async (variable = "clientes") => {
+const draw = async (variable = "Cifra total de muertos por Covid-19 en España") => {
     //Carga de datos
-    data = await d3.csv("barras.csv", d3.autoType)
+    dataMuertes = await d3.csv("muertos_coronavirus_españa.csv", d3.autoType)
 
-    //console.log(data)
-    //console.log(Object.keys(data[0]).slice(1))
+    console.log(dataMuertes)
+    console.log(Object.keys(dataMuertes[0]).slice(2))
 
-    metrica.selectAll("options")
-        .data(Object.keys(data[0]).slice(1))
+    metricaMuertesCovid.selectAll("options")
+        .data(Object.keys(dataMuertes[0]).slice(2))
         .enter()
         .append("option")
         .attr("values", d => d)
@@ -58,17 +58,17 @@ const draw = async (variable = "clientes") => {
     //Accesor
     const xAccessor = (d) => d.tienda
 
-    //console.log(data) 
-    //console.log(d3.map(data, xAccessor))
+    //console.log(dataMuertes) 
+    //console.log(d3.map(dataMuertes, xAccessor))
 
     //Escalador
     const y = d3.scaleLinear().range([alto,0])
     const color = d3.scaleOrdinal()
-        .domain(Object.keys(data[0]).slice(1))
+        .domain(Object.keys(dataMuertes[0]).slice(2))
         .range(d3.schemeDark2 )
         //.range(["#000000", "#219ebc" ,"#0077b6", "#023047"])
         
-
+    
 
     const x = d3.scaleBand()
         .range([0, ancho])
@@ -92,18 +92,20 @@ const draw = async (variable = "clientes") => {
     
     const etiquetas = g.append('g')
 
+    console.log(etiquetas)  
     // Render
     const render = (variable) => {
         //Accesor
         const yAccessor = (d) => d[variable]
-        data.sort((a,b) => yAccessor(b) - yAccessor(a))
-
+        dataMuertes.sort((a,b) => yAccessor(b) - yAccessor(a))
+    
+               
         //Escalador
-        y.domain([0, d3.max(data, yAccessor)])
-        x.domain(d3.map(data, xAccessor))
-
+        y.domain([0, d3.max(dataMuertes, yAccessor)])
+        x.domain(d3.map(dataMuertes, xAccessor))
+        
         //Etiquetas
-        const etiqueta = etiquetas.selectAll('text').data(data)
+        const etiqueta = etiquetas.selectAll('text').data(dataMuertes)
         etiqueta.enter()
             .append('text')
             .attr('x', d => x(xAccessor(d)) + x.bandwidth()/3)
@@ -116,8 +118,8 @@ const draw = async (variable = "clientes") => {
             .text(yAccessor)
 
         // Barras
-        const rect = g.selectAll('rect').data(data, xAccessor)
-            .data(data)
+        const rect = g.selectAll('rect').data(dataMuertes, xAccessor)
+            .data(dataMuertes)
 
         rect
             .enter()
@@ -134,10 +136,10 @@ const draw = async (variable = "clientes") => {
             .attr('y', d => y(yAccessor(d)))
             .attr('width', x.bandwidth())
             .attr('height', d => alto - y(yAccessor(d)))
-            .attr('fill', (d) => (xAccessor(d) == "Satelite" ? "#f00" : color(variable)))
+            .attr('fill', color(variable))
 
         //Titulos
-        titulo.text(`${variable} de la Tienda`)
+        titulo.text(`${variable}`)
 
         //Ejes
         const xAxis = d3.axisBottom(x)
@@ -149,9 +151,9 @@ const draw = async (variable = "clientes") => {
     }
 
     //Eventos
-    metrica.on("change", (e) => {   
+    metricaMuertesCovid.on("change", (e) => {   
         e.preventDefault()
-        //console.log(e.target.value, metrica.node().value)
+        //console.log(e.target.value, metricaMuertesCovid.node().value)
         render(e.target.value)
     })
 

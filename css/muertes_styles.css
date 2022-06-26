@@ -1,0 +1,15 @@
+.grafica_muertes {
+    background-color: #F9FBF2;
+    border: 1px solid #0E1C36;
+}
+
+.axis{
+    font-size: 14pt;
+}
+
+.titulo{
+    font-size: 16pt;
+    font-weight: bold;
+    text-anchor: middle;   
+    
+}
