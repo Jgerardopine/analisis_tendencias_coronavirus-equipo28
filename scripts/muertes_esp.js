@@ -40,7 +40,7 @@ const g = svg
 
 
 //Carga de datos
-const draw = async (variable = "Cifra total de muertos por Covid-19 en España") => {
+const draw = async (variable = "Total_muertos_Covid-19") => {
     //Carga de datos
     dataMuertes = await d3.csv("muertos_coronavirus_españa.csv", d3.autoType)
 
@@ -56,7 +56,7 @@ const draw = async (variable = "Cifra total de muertos por Covid-19 en España")
 
 
     //Accesor
-    const xAccessor = (d) => d.tienda
+    const xAccessor = (d) => d.Periodo
 
     //console.log(dataMuertes) 
     //console.log(d3.map(dataMuertes, xAccessor))
