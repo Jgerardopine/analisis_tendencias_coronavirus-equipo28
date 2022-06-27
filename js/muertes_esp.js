@@ -68,13 +68,12 @@ d3.csv("data/muertes_semanales_otras_causas_vs_covid.csv")
   //Escalador de colores
   const color = d3.scaleOrdinal()
     .domain(Object.keys(data[0]).slice(3))
-    .range(d3.schemeDark2 )
+    .range(["blue","red"])
 
 
   // Escaladores
   x.domain(d3.extent(data, (d) => d.Semana))
   y.domain([0, d3.max(data, (d) => Math.max(d.Muertes_Semanales_Todas_Causas, d.Muertes_Semanales_Covid))])
-
 
   // Agregar Lineas
   layer.append("path")
@@ -107,6 +106,29 @@ d3.csv("data/muertes_semanales_otras_causas_vs_covid.csv")
     .attr("font-size", "20px")
     .attr("text-anchor", "middle")
     .text("Total de Muertes")
+
+
+  //Leyendas de colores
+  const causas = ["Todos los casos (Muertes)", "Muertes por COVID"]
+  const legend = g.append("g")
+	.attr("transform", `translate(${ancho - 10}, ${alto - 480})`)
+
+  causas.forEach((causa, i) => {
+        const legendRow = legend.append("g")
+            .attr("transform", `translate(0, ${i * 20})`)
+    
+        legendRow.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", color(causa))
+    
+        legendRow.append("text")
+        .attr("x", -10)
+        .attr("y", 10)
+        .attr("text-anchor", "end")
+        .style("text-transform", "capitalize")
+        .text(causa)
+    })
 
   // Ejes
   layer.append("g")
