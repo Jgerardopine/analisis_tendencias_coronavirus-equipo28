@@ -3,11 +3,11 @@
     border: 1px solid #6b9080;
   }
   
-  .axis {
+  .axisUCI {
     font-size: 16pt;
   }
   
-  .titulo {
+  .tituloUCI {
     font-size: 18pt;
     font-weight: bold;
     text-anchor: middle;
