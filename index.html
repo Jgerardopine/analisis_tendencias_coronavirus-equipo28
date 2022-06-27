@@ -8,6 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="css/tab_styles.css">
     <link rel="stylesheet" href="css/muertes_styles.css">
+    <link rel="stylesheet" href="css/app_uci.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -25,7 +31,7 @@
       <div class="tab">
         <button class="tablinks" onclick="covidTab(event, 'Equipo')">Equipo</button>
         <button class="tablinks" onclick="covidTab(event, 'CovidMuertes')">Muertes en España</button>
-        <button class="tablinks" onclick="covidTab(event, 'CovidUCI')">Otro</button>
+        <button class="tablinks" onclick="covidTab(event, 'CovidUCI')">Porcentaje camas UCI</button>
       </div>
     
       <!-- Tab content -->
@@ -52,16 +58,35 @@
         </p>
       </div>
     
-      <div id="CovidUCI" class="tabcontent">
-        <h3>Otros</h3>
-        <p>Graficas</p>
+      <div id="CovidUCI" class="tabcontent container">
+        <h1>Porcentaje de camas UCI</h1>
+        <select id="cboYear" class="form-control my-2"></select>
+        <select id="cboMes" class="form-control my-2"></select>
+        <div id="graf"></div>
       </div>
     </main>
     <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js"
+      integrity="sha512-hnFpvCiJ8Fr1lYLqcw6wLgFUOEZ89kWCkO+cEekwcWPIPKyknKV1eZmSSG3UxXfsSuf+z/SgmiYB1zFOg3l2UQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="js/tabs.js"></script>
     <script src="js/muertes_esp.js"></script>
+    <script src="js/app_uci.js"></script>
 </body>
 </html>

@@ -52,7 +52,7 @@ const g = svg
 //!!-----------------------------------------------------
 
 const start = async () => {
-  data = await d3.csv("uci.csv", d3.autoType)
+  data = await d3.csv("data/uci.csv", d3.autoType)
 
   yearArr = await [...new Set(data.map((obj) => { return obj["ano"] }))];
   
