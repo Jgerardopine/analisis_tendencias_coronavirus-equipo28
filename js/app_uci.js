@@ -10,23 +10,23 @@ const cboYear = d3.select("#cboYear")
 const cboMes = d3.select("#cboMes")
 
 // Dimensiones
-const anchoTotal = +graf.style("width").slice(0, -2)
-const altoTotal = (anchoTotal * 9) / 16
+const anchoTotalg = +graf.style("width").slice(0, -2)
+const altoTotalg = (anchoTotalg * 9) / 16
 
-const margins = {
+const marginsg = {
   top: 60,
   right: 20,
   bottom: 75,
   left: 100,
 }
-const ancho = anchoTotal - margins.left - margins.right
-const alto = altoTotal - margins.top - margins.bottom
+const anchog = anchoTotalg - marginsg.left - marginsg.right
+const altog = altoTotalg - marginsg.top - marginsg.bottom
 
 // Elementos gráficos (layers)
-const svg = graf
-  .append("svg")
-  .attr("width", anchoTotal)
-  .attr("height", altoTotal)
+const svgUCI = graf
+  .append("svgUCI")
+  .attr("width", anchoTotalg)
+  .attr("height", altoTotalg)
   .attr("class", "graf")
 
 // svg.selectAll("svg .tick text")    
@@ -35,19 +35,19 @@ const svg = graf
 //     .attr("dy", "-.5em")
 //     .attr("transform", "rotate(-90)");
 
-const layer = svg
-  .append("g")
-  .attr("transform", `translate(${margins.left}, ${margins.top})`)
+const layerUCI = svgUCI
+  .append("gUCI")
+  .attr("transform", `translate(${marginsg.left}, ${marginsg.top})`)
 
-layer
+layerUCI
   .append("rect")
-  .attr("height", alto)
-  .attr("width", ancho)
+  .attr("height", altog)
+  .attr("width", anchog)
   .attr("fill", "white")
 
-const g = svg
-  .append("g")
-  .attr("transform", `translate(${margins.left}, ${margins.top})`)
+const gUCI = svgUCI
+  .append("gUCI")
+  .attr("transform", `translate(${marginsg.left}, ${marginsg.top})`)
 
 //!!-----------------------------------------------------
 
@@ -92,29 +92,29 @@ const draw = () => {
   const xAccessor = (d) => d.provincia
 
   // Escaladores
-  const y = d3.scaleLinear().range([alto, 0])
+  const y = d3.scaleLinear().range([altog, 0])
   const color = d3
     .scaleOrdinal()
     .domain(Object.keys(datatmp[0]).slice(1))
     .range(d3.schemeTableau10)
 
-  const x = d3.scaleBand().range([0, ancho]).paddingOuter(0.2).paddingInner(0.1)
+  const x = d3.scaleBand().range([0, anchog]).paddingOuter(0.2).paddingInner(0.1)
 
-  const titulo = g
+  const titulo = gUCI
     .append("text")
-    .attr("x", ancho / 2)
+    .attr("x", anchog / 2)
     .attr("y", -15)
     .classed("titulo", true)
 
-  const etiquetas = g.append("g")
+  const etiquetas = gUCI.append("gUCI")
 
-  const xAxisGroup = g
-    .append("g")
-    .attr("transform", `translate(0, ${alto})`)
+  const xAxisGroup = gUCI
+    .append("gUCI")
+    .attr("transform", `translate(0, ${altog})`)
     .classed("axis", true)
     .classed("axis-y", true)
 
-  const yAxisGroup = g.append("g").classed("axis", true)
+  const yAxisGroup = gUCI.append("gUCI").classed("axis", true)
 
   const updateMes = () => {
     
@@ -148,7 +148,7 @@ const draw = () => {
     x.domain(d3.map(datatmp, xAccessor))
 
     // Rectángulos (Elementos)
-    const rect = g.selectAll("rect").data(datatmp, xAccessor)
+    const rect = gUCI.selectAll("rect").data(datatmp, xAccessor)
 
     rect
       .enter()
@@ -165,7 +165,7 @@ const draw = () => {
       .attr("x", (d) => x(xAccessor(d)))
       .attr("y", (d) => y(yAccessor(d)))
       .attr("width", x.bandwidth())
-      .attr("height", (d) => alto - y(yAccessor(d)))
+      .attr("height", (d) => altog - y(yAccessor(d)))
       .attr("fill", (d) =>
         xAccessor(d) == "Satélite" ? "#f00" : color("porcentaje")
       )
