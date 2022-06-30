@@ -10,13 +10,13 @@ const cboYear = d3.select("#cboYear")
 const cboMes = d3.select("#cboMes")
 
 // Dimensiones
-const anchoTotalg = +graf.style("width").slice(0, -2)
+const anchoTotalg = 1100//+graf.style("width").slice(0, -2)
 const altoTotalg = (anchoTotalg * 9) / 16
 
 const marginsg = {
   top: 60,
   right: 20,
-  bottom: 75,
+  bottom: 150,
   left: 100,
 }
 const anchog = anchoTotalg - marginsg.left - marginsg.right
@@ -24,7 +24,7 @@ const altog = altoTotalg - marginsg.top - marginsg.bottom
 
 // Elementos gráficos (layers)
 const svgUCI = graf
-  .append("svgUCI")
+  .append("svg")
   .attr("width", anchoTotalg)
   .attr("height", altoTotalg)
   .attr("class", "graf")
@@ -36,7 +36,7 @@ const svgUCI = graf
 //     .attr("transform", "rotate(-90)");
 
 const layerUCI = svgUCI
-  .append("gUCI")
+  .append("g")
   .attr("transform", `translate(${marginsg.left}, ${marginsg.top})`)
 
 layerUCI
@@ -46,7 +46,7 @@ layerUCI
   .attr("fill", "white")
 
 const gUCI = svgUCI
-  .append("gUCI")
+  .append("g")
   .attr("transform", `translate(${marginsg.left}, ${marginsg.top})`)
 
 //!!-----------------------------------------------------
@@ -106,15 +106,15 @@ const draw = () => {
     .attr("y", -15)
     .classed("titulo", true)
 
-  const etiquetas = gUCI.append("gUCI")
+  const etiquetas = gUCI.append("g")
 
   const xAxisGroup = gUCI
-    .append("gUCI")
+    .append("g")
     .attr("transform", `translate(0, ${altog})`)
     .classed("axis", true)
     .classed("axis-y", true)
 
-  const yAxisGroup = gUCI.append("gUCI").classed("axis", true)
+  const yAxisGroup = gUCI.append("g").classed("axis", true)
 
   const updateMes = () => {
     
@@ -188,7 +188,12 @@ const draw = () => {
     // Ejes
     const xAxis = d3.axisBottom(x)
     const yAxis = d3.axisLeft(y).ticks(8)
-    xAxisGroup.transition().duration(2500).call(xAxis)
+    xAxisGroup.transition().duration(2500).call(xAxis).selectAll("text")
+          .attr("transform", "translate(-20,10)rotate(-90)")
+          .style("text-anchor", "end")
+          .style("font-size", 15)
+          .style("fill", "#69a3b2")
+      
     yAxisGroup.transition().duration(2500).call(yAxis)
   }
 
