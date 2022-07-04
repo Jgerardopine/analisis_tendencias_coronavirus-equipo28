@@ -1,0 +1,20 @@
+[
+  {"ID_1":935, "comunidad": "Andalucía", "cantidad": 17248678 , "contidad_formato":"17.248.678"},
+  {"ID_1":936, "comunidad": "Aragón", "cantidad": 2646376 , "contidad_formato":"2.646.376"},
+  {"ID_1":937, "comunidad": "Cantabria", "cantidad": 1265275 , "contidad_formato":"1.265.275"},
+  {"ID_1":938, "comunidad": "Castilla y León", "cantidad": 5306577 , "contidad_formato":"5.306.577"},
+  {"ID_1":939, "comunidad": "Castilla-La Mancha", "cantidad": 3988362 , "contidad_formato":"3.988.362"},
+  {"ID_1":940, "comunidad": "Cataluña", "cantidad": 14176989 , "contidad_formato":"14.176.989"},
+  {"ID_1":941, "comunidad": "Ceuta y Melilla", "cantidad": 149492 , "contidad_formato":"149.492"},
+  {"ID_1":942, "comunidad": "Comunidad de Madrid", "cantidad": 13199464 , "contidad_formato":"13.199.464"},
+  {"ID_1":943, "comunidad": "Comunidad Foral de Navarra", "cantidad": 1317490 , "contidad_formato":"1.317.490"},
+  {"ID_1":944, "comunidad": "Comunidad Valenciana", "cantidad": 10105210 , "contidad_formato":"10.105.210"},
+  {"ID_1":945, "comunidad": "Extremadura", "cantidad": 2327182 , "contidad_formato":"2.327.182"},
+  {"ID_1":946, "comunidad": "Galicia", "cantidad": 6118674 , "contidad_formato":"6.118.674"},
+  {"ID_1":947, "comunidad": "Islas Baleares", "cantidad": 2042420 , "contidad_formato":"2.042.420"},
+  {"ID_1":948, "comunidad": "Islas Canarias", "cantidad":  4156723, "contidad_formato":"4.156.723"},
+  {"ID_1":949, "comunidad": "La Rioja", "cantidad": 644533 , "contidad_formato":"644.533"},
+  {"ID_1":950, "comunidad": "País Vasco", "cantidad": 4411545 , "contidad_formato":"4.411.545"},
+  {"ID_1":951, "comunidad": "Principado de Asturias", "cantidad": 2290602 , "contidad_formato":"2.290.602"},
+  {"ID_1":952, "comunidad": "Región de Murcia", "cantidad": 2812828 , "contidad_formato":"2.812.828"}
+]

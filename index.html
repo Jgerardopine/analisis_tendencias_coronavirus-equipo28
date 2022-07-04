@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/tab_styles.css">
   <link rel="stylesheet" href="css/muertes_styles.css">
   <link rel="stylesheet" href="css/app_uci.css">
-
+  <link rel="stylesheet" href="css/mapa.css">
 </head>
 
 <body>
@@ -38,35 +38,40 @@
       <li><a data-toggle="pill" href="#menu1">Muertes en España</a></li>
       <li><a data-toggle="pill" href="#menu2">Porcentaje camas UCI</a></li>
       <li><a data-toggle="pill" href="#menu3">Vacunas aplicadas en Madrid</a></li>
+      <li><a data-toggle="pill" href="#menu4">Vacunas aplicadas en comunidades de España</a></li>
     </ul>
 
     <div class="tab-content">
       <div id="home" class="tab-pane fade in active ">
-        <h3>Introduccion</h3>
+        <h3><b>Equipo 28 - Visualización de datos</b></h3>
         <br>
-        <h4><b>Equipo 28 - Visualización de datos</b></h4>
         <ul class="list-group list-group-flush">
 
           <li class="list-group-item"> <img src="img/pines.png" class="rounded-circle" height="35" /> Jose Gerardo
             Pineda Galindo
-            <br>
-            <br>
-            <p>Ingeniero en Telecomunicaciones. Mas de 15 años de experiencia en diseño y arquitectura de soluciones para datos, ciencia de datos, redes móviles,
-              analisis de datos e ingenieria de datos. Con experiencia en Python, spark, GCP data stack, airflow, javascript, openstack, entre otros.</p>
+            <br><br>
+            <p>Ingeniero en Telecomunicaciones. Experiencia en diseño y arquitectura de soluciones de redes móviles, aqruitectura
+              , ciencia, ingenieria y análisis de datos.</p>
           </li>
-          <li class="list-group-item"> <img src="img/profile.png" class="rounded-circle" height="35" /> Geyser David
-            Alayon Morales</li>
+          <li class="list-group-item"> <img src="img/geyser.jpg" class="rounded-circle img-circle" height="35" /> Geyser David
+            Alayon Morales
+            <br><br>
+            <p>Ingeniero en Tecnologías de la Información. Analista Técnico empelando herramientas de visualización de datos (PowerBI & Tableau) y desarrollador web con experiencia en Laravel, JavaScript y otras tecnologías de desarrollo web.</p>
+          </li>
           <li class="list-group-item"> <img src="img/duron.png" class="rounded-circle" height="35" /> Luis Gerardo Duron
             Duron
-          </br>
-          <p>
-            Ingeniero en sistemas de informatica. Cuento con mas de 12 años en el area de IT especialmente en desarollo de aplicaciones Web.
-          </p>
+            <br><br>
+            <p>
+            Ingeniero en Sistemas Informaticos. Cuento con mas de 12 años en el area de IT especialmente en desarollo de aplicaciones Web.
+            </p>
           </li>
-          <li class="list-group-item"> <img src="img/profile.png" class="rounded-circle" height="35" /> GIAN BRANCO
-            FARFAN
-            CORREA</li>
-
+          <li class="list-group-item"> <img src="img/gian.png" class="rounded-circle" height="35" /> GIAN BRANCO
+            FARFAN CORREA
+          <br><br>
+            <p>
+              Ingeniero en Sistemas informaticos. Con experiencia en diseño y arquitectura Big Data.
+            </p>
+          </li>
         </ul>
 
       </div>
@@ -141,6 +146,125 @@
         <br>
         <br>
       </div>
+
+      <div id="menu4" class="tab-pane ">
+        <h3>Vacunas aplicadas en las comunidades de España</h3>
+        <br>
+        <p>
+          Este mapa nos permite visualizar el número de vacunas aplicadas en las diferentes comunidades de España, cabe a destacar que las zonas iluminada, son las comunidades con mayor número de vacunas aplicadas. Pase el cursor sobre el mapa para interacturar. 
+        </p>
+        <p>
+          Los datos presentados a corte del día 13 de mayo del 2022, indican que la comunidad que cuenta con mayor población vacunada es la comunidad de Andalucía con 17.248.678, la comunidad que cuenta con el menor número de personas vacunadas es la comunidad de Ceuta y Melilla con 149.492
+        </p>
+        <p>Fuente de Datos: Fuente: Ministerio de Sanidad, Servicios Sociales e Igualdad, www.epdata.es</p>
+        <a href="https://www.epdata.es/datos/vacunas-contra-coronavirus-datos-graficos/571/espana/106">Consultar Fuente de Datos</a>
+        <br>
+        <div id="map"></div>
+        <div id="tooltip"></div>
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Lugar</th>
+                  <th>Comunidad</th>
+                  <th>Vacunados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Andalucía</td>
+                  <td>17.248.678</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Cataluña</td>
+                  <td>14.176.989</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Comunidad de Madrid</td>
+                  <td>13.199.464</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Comunidad Valenciana</td>
+                  <td>10.105.210</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Galicia</td>
+                  <td>6.118.674</td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Castilla y León</td>
+                  <td>5.306.577</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>País Vasco</td>
+                  <td>4.411.545</td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Castilla-La Mancha</td>
+                  <td>3.988.362</td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Región de Murcia</td>
+                  <td>2.812.828</td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>Aragón</td>
+                  <td>2.646.376</td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>Extremadura</td>
+                  <td>2.327.182</td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>Principado de Asturias</td>
+                  <td>2.290.602</td>
+                </tr>
+                <tr>
+                  <th scope="row">13</th>
+                  <td>Islas Baleares</td>
+                  <td>2.042.420</td>
+                </tr>
+                <tr>
+                  <th scope="row">14</th>
+                  <td>Ceuta y Melilla</td>
+                  <td>1.317.490</td>
+                </tr>
+                <tr>
+                  <th scope="row">15</th>
+                  <td>Cantabria</td>
+                  <td>1.265.275</td>
+                </tr>
+                <tr>
+                  <th scope="row">16</th>
+                  <td>La Rioja</td>
+                  <td>644.533</td>
+                </tr>
+                <tr>
+                  <th scope="row">17</th>
+                  <td>Ceuta y Melilla</td>
+                  <td>149.492</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
     </div>
 
   </main>
@@ -154,11 +278,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js"
     integrity="sha512-hnFpvCiJ8Fr1lYLqcw6wLgFUOEZ89kWCkO+cEekwcWPIPKyknKV1eZmSSG3UxXfsSuf+z/SgmiYB1zFOg3l2UQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js/colorbrewer.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
 
   <script src="js/madridVacunasA.js"></script>
   <script src="js/muertes_esp.js"></script>
   <script src="js/app_uci.js"></script>
-
+  <script src="js/mapa.js"></script>
 </body>
-
 </html>
