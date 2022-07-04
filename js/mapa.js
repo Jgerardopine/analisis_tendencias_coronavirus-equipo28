@@ -1,5 +1,5 @@
 // CARGA DE ARCHIVOS
-Promise.all([d3.json("../data/spain.json"), d3.json("../data/data.json")]).then((resolve) => {
+Promise.all([d3.json("data/spain.json"), d3.json("data/data.json")]).then((resolve) => {
     createMap1(resolve[0],resolve[1]);
   });
   
